@@ -7,7 +7,7 @@ import './styles/global.scss';
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Provider store={store}>
-      <div>Weather App</div> 
+      <div>Weather App</div>
     </Provider>
   </React.StrictMode>,
 );
