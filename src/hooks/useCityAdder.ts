@@ -1,9 +1,7 @@
-import { useDispatch } from 'react-redux';
-import { fetchWeather } from '../store/weatherSlice';
-import type { AppDispatch } from '../store';
+import { fetchWeather, useAppDispatch } from '../store';
 
 export const useCityAdder = () => {
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
 
   const tryAddCity = async (
     cityName: string,

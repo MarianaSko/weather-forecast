@@ -6,7 +6,7 @@ const App = () => {
   return (
     <Routes>
       <Route path="/" element={<WeatherDashboard />} />
-      <Route path="/city/:cityName" element={<CityDetails />} />
+      <Route path="/:city" element={<CityDetails />} />
     </Routes>
   );
 };

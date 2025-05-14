@@ -29,7 +29,7 @@ const CityForm: React.FC<CityFormProps> = ({ cities, setCities }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Box sx={{ display: 'flex', gap: 2 }}>
+      <Box sx={{ display: 'flex', gap: { xs: 1, md: 2 } }}>
         <TextField
           id="city-to-add"
           label="City name"
@@ -38,7 +38,12 @@ const CityForm: React.FC<CityFormProps> = ({ cities, setCities }) => {
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
         />
-        <Button type="submit" variant="contained" color="primary">
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          sx={{ fontSize: { xs: 8, sm: 10, md: 14 }, p: { xs: 1, sm: '6px 16px' } }}
+        >
           Add city
         </Button>
       </Box>

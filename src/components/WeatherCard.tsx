@@ -1,12 +1,12 @@
 import React, { useEffect, useCallback } from 'react';
-import { useDispatch, useSelector, shallowEqual } from 'react-redux';
-import { fetchWeather } from '../store/weatherSlice';
-import { Box, Card, CircularProgress, Typography } from '@mui/material';
+import { useSelector, shallowEqual } from 'react-redux';
+import { Box, CircularProgress, Typography } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import CachedIcon from '@mui/icons-material/Cached';
 import WeatherStateIcon from './WeatherStateIcon';
-import type { AppDispatch, RootState } from '../store';
+import { fetchWeather, useAppDispatch, type RootState } from '../store';
 import { useNavigate } from 'react-router-dom';
+import CardElement from './CardElement';
 
 interface WeatherCardProps {
   city: string;
@@ -15,7 +15,7 @@ interface WeatherCardProps {
 }
 
 const WeatherCard: React.FC<WeatherCardProps> = ({ city, cities, setCities }) => {
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
   const { data, error, loading } = useSelector(
     (state: RootState) => ({
       data: state.weather.citiesData[city],
@@ -33,8 +33,9 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ city, cities, setCities }) =>
   }, [city, dispatch, data, error, loading]);
 
   const handleCardClick = () => {
-    navigate(`/city/${city}`);
+    navigate(`/${city}`);
   };
+
   const handleRefresh = useCallback(
     (e: React.MouseEvent<SVGSVGElement>) => {
       e.stopPropagation();
@@ -52,21 +53,8 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ city, cities, setCities }) =>
   );
 
   return (
-    <Card
-      sx={{
-        cursor: 'pointer',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-        gap: 2,
-        padding: 4,
-        color: '#ced4dd',
-        minWidth: '220px',
-        minHeight: '162px',
-        backgroundColor: '#1e3f67',
-        boxShadow:
-          ' rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;',
-      }}
+    <CardElement
+      sx={{ cursor: 'pointer', padding: 4, minWidth: '220px', minHeight: '162px' }}
       onClick={handleCardClick}
     >
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -114,7 +102,7 @@ const WeatherCard: React.FC<WeatherCardProps> = ({ city, cities, setCities }) =>
           },
         }}
       />
-    </Card>
+    </CardElement>
   );
 };
 

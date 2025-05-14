@@ -15,9 +15,17 @@ const WeatherDashboard: React.FC = () => {
   ]);
 
   return (
-    <Box sx={{ padding: 6, display: 'flex', flexDirection: 'column' }}>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Typography variant="h1" fontSize={36}>
+    <Box sx={{ padding: { xs: 2, sm: 4, md: 6 }, display: 'flex', flexDirection: 'column' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexDirection: { xs: 'column', sm: 'row' },
+          gap: 2,
+        }}
+      >
+        <Typography variant="h1" sx={{ fontSize: { xs: 28, md: 36 } }}>
           Weather forecast
         </Typography>
         <CityForm cities={cities} setCities={setCities}></CityForm>
@@ -32,6 +40,7 @@ const WeatherDashboard: React.FC = () => {
           justifyContent: 'center',
         }}
       >
+        {!cities.length && <Typography variant="subtitle1">YOU HAVEN'T ADDED ANY CITY.</Typography>}
         {cities.map((city, id) => {
           return <WeatherCard key={id} city={city} cities={cities} setCities={setCities} />;
         })}

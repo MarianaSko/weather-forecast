@@ -24,6 +24,7 @@ export const weatherService = {
         units: 'metric',
       },
     });
+
     return response.data;
   },
 };
