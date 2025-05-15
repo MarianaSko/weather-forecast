@@ -39,7 +39,9 @@ npm install
 
 ### 3. Create .env file
 Create a .env file in the root directory and add your OpenWeatherMap API key:
+
 VITE_OPENWEATHER_API_KEY=your_api_key_here
+
 You can get an API key from: https://openweathermap.org/api
 
 ## ⚙️ Available Scripts
