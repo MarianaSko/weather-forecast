@@ -31,6 +31,7 @@ A weather forecast web application built with **React**, **TypeScript**, **Redux
 
 ### 1. Clone the repository
 git clone https://github.com/MarianaSko/weather-forecast.git
+
 cd weather-forecast
 
 ### 2. Install dependencies
