@@ -16,7 +16,6 @@ interface HourlyTemperatureChartProps {
 
 const HourlyTemperatureChart = ({ forecast }: HourlyTemperatureChartProps) => {
   const today = new Date().toLocaleDateString('en-CA');
-  console.log(today);
 
   const data = forecast.list
     .filter((item) => item.dt_txt.startsWith(today))
