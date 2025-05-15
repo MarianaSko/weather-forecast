@@ -8,14 +8,15 @@ import {
   ResponsiveContainer,
   CartesianGrid,
 } from 'recharts';
-import type { ForecastAPIResponse } from '../store';
+import type { ForecastAPIResponse } from '../../store';
 
 interface HourlyTemperatureChartProps {
   forecast: ForecastAPIResponse;
 }
 
 const HourlyTemperatureChart = ({ forecast }: HourlyTemperatureChartProps) => {
-  const today = new Date().toISOString().split('T')[0];
+  const today = new Date().toLocaleDateString('en-CA');
+  console.log(today);
 
   const data = forecast.list
     .filter((item) => item.dt_txt.startsWith(today))

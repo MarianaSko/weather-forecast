@@ -3,10 +3,10 @@ import { useSelector, shallowEqual } from 'react-redux';
 import { Box, CircularProgress, Typography } from '@mui/material';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import CachedIcon from '@mui/icons-material/Cached';
-import WeatherStateIcon from './WeatherStateIcon';
-import { fetchWeather, useAppDispatch, type RootState } from '../store';
 import { useNavigate } from 'react-router-dom';
-import CardElement from './CardElement';
+import { fetchWeather, RootState, useAppDispatch } from '../../store';
+import CardElement from '../CardElement';
+import WeatherStateIcon from '../WeatherStateIcon';
 
 interface WeatherCardProps {
   city: string;

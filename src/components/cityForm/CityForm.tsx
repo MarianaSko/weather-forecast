@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { TextField, Button, Box } from '@mui/material';
-import { useCityAdder } from '../hooks/useCityAdder';
+import { useCityAdder } from '../../hooks/useCityAdder';
 
 interface CityFormProps {
   cities: string[];
@@ -18,7 +18,7 @@ const CityForm: React.FC<CityFormProps> = ({ cities, setCities }) => {
       inputValue,
       cities,
       (city) => {
-        setCities((prevCities) => [...prevCities, city]);
+        setCities([...cities, city]);
         setInputValue('');
       },
       (message) => {

@@ -9,7 +9,7 @@ const WeatherStateIcon: React.FC<WeatherStateIconProps> = ({ iconCode, isBig }) 
   return (
     <img
       src={`https://openweathermap.org/img/wn/${iconCode}${isBig ? '@2x' : ''}.png`}
-      alt="Sky state"
+      alt={`Weather icon ${iconCode}`}
     />
   );
 };

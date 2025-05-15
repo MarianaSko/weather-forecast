@@ -1,6 +1,6 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import type { ForecastAPIResponse, WeatherAPIResponse } from "./weatherTypes";
-import { weatherService } from "../services/weatherService";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import type { ForecastAPIResponse, WeatherAPIResponse } from './weatherTypes';
+import { weatherService } from '../services/weatherService';
 
 export const fetchWeather = createAsyncThunk<
   { weatherData: WeatherAPIResponse },

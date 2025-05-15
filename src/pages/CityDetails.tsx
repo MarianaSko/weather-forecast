@@ -1,10 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Box, CircularProgress, Typography } from '@mui/material';
-import { fetchForecast, fetchWeather, useAppDispatch, type ForecastAPIResponse, type RootState } from '../store';
-import HourlyTemperatureChart from '../components/HourlyTemperatureChart';
-import DailyForecast from '../components/DailyForecast';
+import {
+  fetchForecast,
+  fetchWeather,
+  useAppDispatch,
+  type ForecastAPIResponse,
+  type RootState,
+} from '../store';
+import HourlyTemperatureChart from '../components/hourlyTemperatureChart/HourlyTemperatureChart';
+import DailyForecast from '../components/dailyForecast/DailyForecast';
 import WeatherStateIcon from '../components/WeatherStateIcon';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
@@ -19,7 +25,7 @@ const CityDetails = () => {
 
   const lat = weather?.lat;
   const lon = weather?.lon;
-  const [isLoading, setIsLoading] = useState(true);
+  const dailyData = forecast?.list.filter((_, idx) => idx % 8 === 0);
 
   useEffect(() => {
     if (!city) return;
@@ -31,12 +37,15 @@ const CityDetails = () => {
     if (lat && lon) {
       dispatch(fetchForecast({ city, lat, lon }));
     }
-
-    setIsLoading(false);
   }, [city, dispatch, weather, lat, lon]);
 
-  if (!city) navigate('/');
-  if (isLoading || !weather || !lat || !lon) return <CircularProgress />;
+  useEffect(() => {
+    if (!city) {
+      navigate('/');
+    }
+  }, [city, navigate]);
+
+  if (!weather || !lat || !lon) return <CircularProgress />;
 
   const { temp, humidity, wind, iconCode, feelsLike } = weather;
 
@@ -55,6 +64,7 @@ const CityDetails = () => {
             transform: 'scale(1.1)',
           },
         }}
+        data-testid="arrow-back-icon"
         onClick={() => navigate('/')}
       ></ArrowBackIcon>
       <Box
@@ -93,9 +103,13 @@ const CityDetails = () => {
               Wind speed: {wind} kph
             </Typography>
           </Box>
-          {forecast && <HourlyTemperatureChart forecast={forecast} />}
+          {forecast && (
+            <HourlyTemperatureChart forecast={forecast} data-testid="hourly-temperature-chart" />
+          )}
         </Box>
-        {forecast && <DailyForecast forecast={forecast} />}
+        {forecast && dailyData && (
+          <DailyForecast forecast={dailyData} data-testid="daily-forecast" />
+        )}
       </Box>
     </>
   );

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 import { useLocalStorageState } from '../hooks/useLocalStorageState';
-import CityForm from '../components/CityForm';
-import WeatherCard from '../components/WeatherCard';
+import CityForm from '../components/cityForm/CityForm';
+import WeatherCard from '../components/weatherCard/WeatherCard';
 
 const LOCAL_STORAGE_KEY = 'weather_cities';
 

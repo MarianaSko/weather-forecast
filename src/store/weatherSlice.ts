@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { fetchWeather, fetchForecast } from "./weatherThunks";
-import type { WeatherState } from "./weatherTypes";
+import { createSlice } from '@reduxjs/toolkit';
+import { fetchWeather, fetchForecast } from './weatherThunks';
+import type { WeatherState } from './weatherTypes';
 
 const initialState: WeatherState = {
   citiesData: {},
@@ -12,7 +12,7 @@ const initialState: WeatherState = {
 };
 
 const weatherSlice = createSlice({
-  name: "weather",
+  name: 'weather',
   initialState,
   reducers: {},
   extraReducers: (builder) => {

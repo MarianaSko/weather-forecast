@@ -33,7 +33,7 @@ export interface ForecastItem {
 
 export interface ForecastAPIResponse {
   list: ForecastItem[];
-  city: {
+  city?: {
     name: string;
     country: string;
   };

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HourlyTemperatureChart matches snapshot 1`] = `
+<div>
+  <div
+    class="MuiBox-root css-0"
+  >
+    <h6
+      class="MuiTypography-root MuiTypography-h6 MuiTypography-gutterBottom css-14ewf1c-MuiTypography-root"
+    >
+      HOURLY FORECAST (TODAY)
+    </h6>
+    <div
+      class="recharts-responsive-container"
+      style="width: 100%; height: 300px; min-width: 0;"
+    />
+  </div>
+</div>
+`;
